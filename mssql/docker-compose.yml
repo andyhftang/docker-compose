@@ -1,0 +1,17 @@
+version: "3"
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-CU19-ubuntu-16.04
+    container_name: mssql
+    restart: always
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./volumes/var/opt/mssql/data:/var/opt/mssql/data
+      - ./volumes/var/opt/mssql/log:/var/opt/mssql/log
+      - ./volumes/var/opt/mssql/secrets:/var/opt/mssql/secrets
+    network_mode: bridge
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Password123!"
+      TZ: "Asia/Hong_Kong"

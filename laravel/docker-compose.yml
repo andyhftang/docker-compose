@@ -1,0 +1,25 @@
+version: "3"
+services:
+  php:
+    build:
+      context: ./.docker-res/.
+      dockerfile: dockerfile
+    image: php7.3:fpm
+    container_name: let-php
+    restart: always
+    tty: true
+    working_dir: /var/www/html
+    volumes:
+      - ./html:/var/www/html
+      - ./.docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+
+  nginx:
+    image: nginx:alpine
+    container_name: let-nginx
+    restart: always
+    tty: true
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/var/www/html
+      - ./.docker/nginx/conf.d:/etc/nginx/conf.d

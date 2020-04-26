@@ -1,0 +1,13 @@
+version: "3"
+services:
+  verdaccio:
+    image: verdaccio/verdaccio
+    container_name: verdaccio
+    restart: always
+    tty: true
+    ports:
+      - "14873:4873"
+    volumes:
+      - "./vloumes/verdaccio/storage:/verdaccio/storage"
+      - "./vloumes/verdaccio/conf:/verdaccio/conf"
+      - "./vloumes/verdaccio/plugins:/verdaccio/plugins"
