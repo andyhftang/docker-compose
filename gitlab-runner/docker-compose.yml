@@ -1,0 +1,22 @@
+version: "3"
+services:
+  gitlab-runner-dind:
+    image: docker:dind
+    container_name: gitlab-runner-dind
+    privileged: true
+    restart: always
+    environment:
+      - DOCKER_TLS_CERTDIR=
+    #volumes:
+     # - ./volumes/etc/resolv.conf:/etc/resolv.conf
+  gitlab-runner:
+    image: gitlab/gitlab-runner:latest
+    container_name: gitlab-runner
+    restart: always
+    environment:
+      - DOCKER_HOST=tcp://gitlab-runner-dind:2375/
+      - DOCKER_DRIVER=overlay2
+      #- DOCKER_TLS_CERTDIR=
+    volumes:
+      - ./volumes/etc/gitlab-runner:/etc/gitlab-runner
+      - ./volumes/root/.ssh:/root/.ssh
