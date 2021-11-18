@@ -1,0 +1,23 @@
+version: "3"
+services:
+  poste:
+    image: analogic/poste.io
+    container_name: poste
+    restart: always
+    ports:
+      - "25:25"
+      - "4080:80"
+#      - "4443:443"
+#      - "110:110"
+#      - "143:143"
+      - "465:465"
+#      - "587:587"
+      - "993:993"
+      - "995:995"
+    hostname: "mail.example.com"
+    environment:
+      TZ: "Asia/Hong_Kong"
+      HTTPS: "OFF"
+      DISABLE_RSPAMD: "TRUE"
+    volumes:
+      - ./volumes/data/:/data
