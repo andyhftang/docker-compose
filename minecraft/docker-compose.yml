@@ -1,0 +1,17 @@
+version: "3"
+services:
+  minecraft:
+    image: nimmis/spigot
+    container_name: minecraft-server
+    restart: always
+    ports:
+      - "25565:25565"
+      - "8123:8123"
+    environment:
+      EULA: "TRUE"
+      SPIGOT_VER: "1.18"
+      MC_MAXMEM: "2g"
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./volumes/minecraft:/minecraft

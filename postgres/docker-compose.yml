@@ -10,7 +10,7 @@ services:
       - ./volumes/data/:/var/lib/postgresql/data
     network_mode: bridge
     environment:
-      POSTGRES_PASSWORD: "password"
+      POSTGRES_PASSWORD: "45tPGWpNQUJSFTZ2"
       TZ: "Asia/Hong_Kong"
 
       #  adminer:

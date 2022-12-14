@@ -1,0 +1,12 @@
+version: "3"
+services:
+  haproxy:
+    image: mminks/haproxy-docker-logging
+    container_name: haproxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      #     - ./volumes/usr/local/etc/haproxy/rsyslog.conf:/usr/local/etc/haproxy/rsyslog.conf
+      - ./volumes/usr/local/etc/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg

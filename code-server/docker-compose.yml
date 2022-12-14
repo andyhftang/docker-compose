@@ -1,0 +1,14 @@
+version: "3"
+services:
+  redis:
+    image: codercom/code-server
+    container_name: code-server
+    restart: always
+    ports:
+      - "8990:8080"
+    volumes:
+      - ./volumes/home/coder/.config:/home/coder/.config
+      - ./volumes/home/coder/project:/home/coder/project
+    #environment:
+    #  - "DOCKER_USER=${USER}"
+    # user: ${UID_GID}
